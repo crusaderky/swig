@@ -23,6 +23,14 @@
 
 #endif
 
+/* Compatibility macros for Python <3.13 */
+#if PY_VERSION_HEX < 0x030D00B3
+#  define Py_BEGIN_CRITICAL_SECTION(op) {
+#  define Py_END_CRITICAL_SECTION() }
+#  define Py_BEGIN_CRITICAL_SECTION2(a, b) {
+#  define Py_END_CRITICAL_SECTION2() }
+#endif
+
 /* SWIG APIs for compatibility of both Python 2 & 3 */
 
 #if PY_VERSION_HEX >= 0x03000000
